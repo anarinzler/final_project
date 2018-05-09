@@ -104,6 +104,8 @@ tidy_df %>%
          "Training Group")
   ```
   
+  `r cite_r("r-references.bib")`
+  
 dum_df[!complete.cases(dum_df),]
 
 group_by(., dur) %>% 
@@ -142,6 +144,21 @@ labs(x = "Participant", y = "Vowel Duration(ms)", color =
        "Training Group")
 ```
 
+\newpage
+
+# Appendices
+_Appendix A_
+```{r, message=FALSE, include=TRUE, echo=FALSE}
+knitr::include_graphics("/Users/anarinzler/Documents/GitHub/final_project/manuscript/figs/tableA", dpi = 108)
+```
+_Appendix B_
+```{r, message=FALSE, include=TRUE, echo=FALSE}
+knitr::include_graphics("/Users/anarinzler/Documents/GitHub/final_project/manuscript/figs/tableB", dpi = 108)
+```
+_Appendix C_
+```{r, message=FALSE, include=TRUE, echo=FALSE}
+knitr::include_graphics("/Users/anarinzler/Documents/GitHub/final_project/manuscript/figs/tableC", dpi = 108)
+```
 #mixed effects modeling
 #lmer() or glmer() from the lme4 package 
 #lmer(criterion ~ fixed_effect + (1|random_effect), data = my_data)

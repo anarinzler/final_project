@@ -2,18 +2,18 @@
     "collab_server" : "",
     "contents" : "",
     "created" : 1525373630064.000,
-    "dirty" : false,
+    "dirty" : true,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
     "id" : "6FCE384",
     "lastKnownWriteTime" : 1525858740,
-    "last_content_update" : 1525858740992,
+    "last_content_update" : 1525878611388,
     "path" : "~/Documents/GitHub/final_project/presentation/scripts/additional_info.R",
     "project_path" : "presentation/scripts/additional_info.R",
     "properties" : {
-        "cursorPosition" : "104,5",
-        "scrollLine" : "90"
+        "cursorPosition" : "160,3",
+        "scrollLine" : "146"
     },
     "relative_order" : 3,
     "source_on_save" : false,

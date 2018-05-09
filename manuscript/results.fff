@@ -1,0 +1,12 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\centering \includegraphics{/Users/anarinzler/Documents/GitHub/final_project/manuscript/figs/tableC}
+
+}
+
+\caption{ }\label{fig:unnamed-chunk-1}
+\end{figure*}
+\efloatseparator
+ 
