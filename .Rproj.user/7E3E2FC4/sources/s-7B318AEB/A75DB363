@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525368026395.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2953630594",
+    "id" : "A75DB363",
+    "lastKnownWriteTime" : 1525863532,
+    "last_content_update" : 1525863532846,
+    "path" : "~/Documents/GitHub/final_project/presentation/scripts/index.Rmd",
+    "project_path" : "presentation/scripts/index.Rmd",
+    "properties" : {
+        "cursorPosition" : "1111,3",
+        "last_setup_crc32" : "7B318AEBe907aa8d",
+        "scrollLine" : "1102"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,6 @@
+"0","library(caret)
+"
+"2","package ‘caret’ was built under R version 3.4.4"
+"2","Error: package or namespace load failed for ‘caret’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘ddalpha’
+"

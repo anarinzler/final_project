@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Training effects on L2 English productions</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Ana Bennett | Rutgers University | Center for Cognitive Science" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rutgers-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/rutgers.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Training effects on L2 English productions
+## Advisor: Dr. Karin Stromswold
+### Ana Bennett | Rutgers University | Center for Cognitive Science
+### 4/24/2016
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Background &amp; Research Question
+
+---
+class: left, middle 
+
+# Background: Timing vs. Amount of Input 
+
+--
+
+.pull-left[
+### Critical Period Hypothesis:
+- critical period for acquisition is up to puberty
+- learning a language after puberty is more difficult 
+- due to reduction in neural plasticity with age?
+
+]
+
+--
+
+.pull-right[
+### 'Amount of Input Hypothesis':
+- proposed by Terry Au (ms)
+- adults receive less exposure 
+- optimal acquisition of English as L2 differs by L1
+]  
+--
+
+**Can the quality and quantity of input influence a Cantonese speaker's ability to perceive and produce notoriously difficult English contrasts?**
+
+---
+# What are the English contrasts of interest?  
+**Stop consonants:** /p, t, k/ and /b, d, g/
+
+- Bilabial: /p/ is **voiceless**; /b/ is **voiced**
+- Alveolar: /t/ is **voiceless**; /d/ is **voiced**
+- Velar: /k/ is **voiceless**; /g/ is **voiced** 
+
+--
+
+### What makes these contrasts difficult? 
+
+--
+.pull-left[
+**Cantonese** /p, t, k/ and /b, d, g/
+- Cantonese does not have articulatory feature of **voicing** 
+- Cantonese uses **aspiration** to make these distinction in onset position
+- Cantonese **only** has unreleased /p, t, k/ in coda position
+]
+--
+.pull-right[
+**English:** /p, t, k/ and /b, d, g/
+- In English /p, t, k/ are **aspirated** (i.e. in onset position: [**p**æt] vs. [**b**æt])
+- In English /p, t, k/ are **unaspirated** and released (i.e. in coda position: [tæ**p**] vs. [tæ**b**])
+] 
+
+
+Note: _I will focus on words with stops in coda position_
+
+---
+class: left, middle 
+
+# Main Question of interest
+
+--
+
+## Does training result in trained Cantonese speakers producing longer vowel  durations in words with voiced stops in coda position? 
+
+--
+
+# Prediction
+
+--
+
+Cantonese speakers that received training will produce longer vowel lengths in words with voiced stops in coda position than Cantonese speakers that _did not_ receive training.  
+
+**Note:** _The training and collection of Cantonese speakers data was done by Terry Au (ms). She generously permitted us to use her data for acoustic analyses_
+
+---
+
+# Why hypothesize this?
+
+- Vowel duration is a robust acoustic cue to stops in coda position 
+- Vowel duration is **longer** before voiced consonants than for voiceless
+- Indication that perhaps Cantonese speakers utilize this cue to distinguish between voiced and voiceless consonants. 
+
+--
+
+
+
+
+**Are Cantonese speakers producing these words like native English speakers; or are they doing something different?**
+---
+class: inverse, center, middle
+
+# Methods
+
+---
+# Methods
+
+Participants (18- 22 yrs.)
+- 18 trained adult Cantonese speakers 
+- 18 waitlist-control adult Cantonese speakers 
+
+--
+
+Data
+- Productions of phonological minimal word pairs with **voiced** and **voiceless** stops in coda position after training 
+
+--
+
+.pull-left[
+**Voiced**
+- bad
+- bag 
+- cab
+- cub
+- dog
+- fad
+- feed 
+- pig
+- tab 
+]
+
+--
+
+.pull-right[
+**Voiceless**
+- bat
+- back
+- cap
+- cup
+- dock
+- fat
+- feet
+- pick
+- tab 
+]
+
+--
+
+**Note:** There were three age groups in total, I am in the process of slicing this data. Also, removed word **got** because no production data for minimal pair **god**
+
+
+---
+
+# Acoustic Slicing
+- Used PRAAT
+- Marked vowel duration boundaries for all productions 
+- Utilized the wav method for the beginning of the vowel and F2 method for the end of the vowel 
+
+
+--
+
+### Categorical Predictors
+- Training: 2 levels (untrained/trained)
+- Voicing: 2 levels (voiceless/voiced)
+
+--
+
+### Criterion
+- Vowel duration (ms) of post productions with voiced and voiceless stop consonants in coda position 
+
+---
+# Data 
+
+```r
+head(tidy_df)
+```
+
+```
+##   Participant TrainingGroup Word VoicedUnvoiced Position Dur
+## 1        1404           Yes back       unvoiced    vowel 236
+## 2        1404           Yes  bat       unvoiced    vowel 259
+## 3        1404           Yes  cup       unvoiced    vowel 158
+## 4        1404           Yes dock       unvoiced    vowel 186
+## 5        1404           Yes  fat       unvoiced    vowel 194
+## 6        1404           Yes feet       unvoiced    vowel 235
+##   PrePosttraining OnsetMedialCoda      POA tierNumber
+## 1            post            coda    velar          1
+## 2            post            coda alveolar          1
+## 3            post            coda bilabial          1
+## 4            post            coda    velar          1
+## 5            post            coda alveolar          1
+## 6            post            coda alveolar          1
+```
+
+---
+# Viewing the data
+&lt;img src="index_files/figure-html/plot-1.png" width="576" style="display: block; margin: auto;" /&gt;
+
+It appears that overall, trained and untrained participants had about equal vowel lengths - with longer vowel lengths for in the voiced trained condition
+---
+# Analysis: General Linear Model 
+
+### Some considerations...
+- Categorical variables need to be coded: _which type of coding should I use?_
+- Chose sum coding: created 2 new columns for the training and voicing
+variables: trained (1), untrained (-1), voiced (1), voiceless (-1)
+- In which order should the variables should be entered into the model?
+
+---
+# Analysis: General Linear Model
+
+```r
+head(sum_df)
+```
+
+```
+##   Participant TrainingGroup Word VoicedUnvoiced Position Dur
+## 1        1404           Yes back       unvoiced    vowel 236
+## 2        1404           Yes  bat       unvoiced    vowel 259
+## 3        1404           Yes  cup       unvoiced    vowel 158
+## 4        1404           Yes dock       unvoiced    vowel 186
+## 5        1404           Yes  fat       unvoiced    vowel 194
+## 6        1404           Yes feet       unvoiced    vowel 235
+##   PrePosttraining OnsetMedialCoda      POA tierNumber trainingSum
+## 1            post            coda    velar          1           1
+## 2            post            coda alveolar          1           1
+## 3            post            coda bilabial          1           1
+## 4            post            coda    velar          1           1
+## 5            post            coda alveolar          1           1
+## 6            post            coda alveolar          1           1
+##   voicingSum Dur - mean(Dur)
+## 1         -1       57.970679
+## 2         -1       80.970679
+## 3         -1      -20.029321
+## 4         -1        7.970679
+## 5         -1       15.970679
+## 6         -1       56.970679
+```
+
+---
+# Nested Model Comparisons
+
+### Tested the following models:
+- **Inclusive:** (duration ~ voicingSum * trainingSum)
+- ** Additive:**  (duration ~ voicingSum + trainingSum)
+- ** No Voicing:**  (duration ~ trainingSum)
+- ** No Training:** (duration ~ voicingSum)
+- **Null:**  (duration ~ 1)
+
+
+
+### Best Model Summary
+
+The inclusive model was the best model fit. It explained the most variance, with R^2 = .0537; and adjusted = .04906
+&lt;table class="table" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; std.error &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 177.982 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 85.227 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; voicingSum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.659 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.583 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; trainingSum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.115 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.492 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.136 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; voicingSum:trainingSum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.569 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.709 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.088 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Nested Model Comparisons
+
+The inclusive model explained more variance than just voicing or training alone 
+
+
+**Model with only voicing:** R^2 = .04918, adjusted = .04623
+&lt;table class="table" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; std.error &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 177.993 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.093 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 85.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; voicingSum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.668 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.093 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.574 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+--
+**Model with only training:** R^2 = .00337, adjusted = .001827
+&lt;table class="table" style="font-size: 16px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; std.error &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 178.029 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83.209 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; trainingSum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.162 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.478 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.14 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+# Tested for Main Effects and Interactions
+
+### Findings:
+- **No Main Effect of training:** _F_(1) = 2.2341, _p_ =.135
+- **Main Effect of voicing:** _F_(1) = 31.074, _p_ &lt;.001
+- **No Interaction:** _F_(1) = 2.9210, _p_ &lt;.08   
+
+
+
+
+
+---
+# Implications 
+- Training did not seem to have an effect vowel length production  
+- However, vowel length varied depending upon whether the word had a voiced or voiceless coda
+- Specifically, voiced vowel length mean was 129.643 (ms); and the voiceless was voiceless vowel length mean was 106.323 (ms)
+- There seems to be something going on with the data...
+
+--
+
+**Possible explanations for these patterns?**
+
+- Participant as random effect? 
+- Model assumptions violated?
+- Incorrect coding process? 
+- Excluding relevant variable
+
+---
+# Model Residuals
+- Should be normally distributed
+- Absolute values of 1Q and 3Q should be similar
+- Mean = 0, median close to 0
+
+
+```r
+summary(mod_inc$residuals)
+```
+
+```
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -128.7778  -34.0489   -0.9568    0.0000   34.7669  197.0432
+```
+
+---
+# Autocorrelation of Residuals
+
+![](index_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+---
+# Normality of Residuals
+
+![](index_files/figure-html/residuals-1.png)&lt;!-- --&gt;
+
+---
+# Homoskedasticity 
+There is a clear pattern here; although not a fan pattern 
+- Does not bias parameter estimates
+- Possible reason for t-ratios/p-values 
+![](index_files/figure-html/mod assumptions-1.png)&lt;!-- --&gt;
+
+---
+# Conclusions:
+
+- Training did not have an effect 
+- This finding is due to use of general linear model
+- Transformations, such as centering?
+- Maybe sum coding did not provide useful information 
+    - Although it only affects the interpretation of the results
+      for each variable and does not change the 
+      overall effect of the variables
+    - Typically used for 1 categorical variable with 2 levels 
+- Excluded relevant variable (Type II error?) 
+
+
+--
+
+**Much variance left to be explained**
+Recall: best model only explained ~ 5% of the variance :(
+
+---
+# How to manage this?
+
+### What other predictors do I have?
+- Place of articulation (POA)
+- Phoneme 
+- Performance on comprehension task 
+
+
+
+### What other criterion do I plan to measure?
+- VOT
+- Mean aspiration intensity
+- Aspiration duration 
+- F2 at the end of the vowel 
+- Closure duration 
+- Voicing bar duration
+- **Pre and post measures**
+
+---
+# Comments and Questions? 
+
+- Additional variable suggestions?
+- Different coding suggestions?
+- Any other suggestions??
+
+#**Next Step: The mixed effects model!**
+
+---
+# Boxplot with POA
+&lt;img src="index_files/figure-html/boxplot with POA-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+```
+## $x
+## [1] "Training"
+## 
+## $y
+## [1] "Vowel Duration(ms)"
+## 
+## $title
+## [1] "Effects of Training on Vowel Duration"
+## 
+## $fill
+## [1] "Training Group"
+## 
+## attr(,"class")
+## [1] "labels"
+```
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"self_contained": false,
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,451 @@
+---
+title: "Training effects on L2 English productions"
+subtitle: "Advisor: Dr. Stromswold"
+author: "Ana Bennett  |  Rutgers University | Center for Cognitive Science"
+date: "4/24/2016"
+output:
+  xaringan::moon_reader:
+    css: ['rladies', 'rutgers-fonts', 'rutgers']
+    lib_dir: libs
+    nature:
+      self_contained: false
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r eval=FALSE, tidy=FALSE,message=FALSE, include=FALSE}
+devtools::install_github("yihui/xaringan")
+names(xaringan:::list_css())
+```
+
+```{r, load libraries, message=FALSE, include=FALSE}
+library(tidyverse)
+library(xaringan)
+library(ggfortify)
+library(broom)
+library(kableExtra)
+library(lme4)
+library(Matrix)
+```
+```{r, upload raw data, message=FALSE, include=FALSE}
+lang_df <- read.csv("/Users/anarinzler/Desktop/cantonese_final/raw data/total_raw.csv")
+```
+
+```{r, tidy data, message=FALSE, include=FALSE}
+tidy_df <- lang_df %>%
+  select(., Participant, TrainingGroup, Word, VoicedUnvoiced, Position, Dur, PrePosttraining, OnsetMedialCoda, POA, tierNumber) %>%
+  filter(., Position == "vowel", PrePosttraining == "post", OnsetMedialCoda == "coda", tierNumber == "1", Word != "got")
+save(tidy_df,file="tidy_df.Rda")
+```
+
+```{r sum coding and centering, message=FALSE, include=FALSE}
+sum_df <- tidy_df %>%
+ mutate(., trainingSum = if_else(TrainingGroup == "Yes", true = 1, false = -1)) %>%
+  mutate(., voicingSum = if_else(VoicedUnvoiced == "voiced", true = 1, false = -1)) %>%
+mutate(., Dur - mean(Dur))
+save(sum_df,file="sum_df.Rda")
+```
+class: inverse, center, middle
+
+# Background & Research Question
+
+---
+class: left, middle 
+
+# Background: Timing vs. Amount of Input 
+
+--
+
+.pull-left[
+### Critical Period Hypothesis:
+- critical period for acquisition is up to puberty
+- learning a language after puberty is more difficult 
+- due to reduction in neural plasticity with age?
+
+]
+
+--
+
+.pull-right[
+### 'Amount of Input Hypothesis':
+- proposed by Terry Au (ms)
+- adults receive less exposure 
+- optimal acquisition of English as L2 differs by L1
+]  
+--
+
+**Can the quality and quantity of input influence a Cantonese speaker's ability to perceive and produce notoriously difficult English contrasts?**
+
+---
+# What are the English contrasts of interest?  
+**Stop consonants:** /p, t, k/ and /b, d, g/
+
+- Bilabial: /p/ is **voiceless**; /b/ is **voiced**
+- Alveolar: /t/ is **voiceless**; /d/ is **voiced**
+- Velar: /k/ is **voiceless**; /g/ is **voiced** 
+
+--
+
+### What makes these contrasts difficult? 
+
+--
+.pull-left[
+**Cantonese** /p, t, k/ and /b, d, g/
+- Cantonese does not have articulatory feature of **voicing** 
+- Cantonese uses **aspiration** to make these distinction in onset position
+- Cantonese **only** has unreleased /p, t, k/ in coda position
+]
+--
+.pull-right[
+**English:** /p, t, k/ and /b, d, g/
+- In English /p, t, k/ are **aspirated** (i.e. in onset position: [**p**æt] vs. [**b**æt])
+- In English /p, t, k/ are **unaspirated** and released (i.e. in coda position: [tæ**p**] vs. [tæ**b**])
+] 
+
+
+Note: _I will focus on words with stops in coda position_
+
+---
+class: left, middle 
+
+# Main Question of interest
+
+--
+
+## Does training result in trained Cantonese speakers producing longer vowel  durations in words with voiced stops in coda position? 
+
+--
+
+# Prediction
+
+--
+
+Cantonese speakers that received training will produce longer vowel lengths in words with voiced stops in coda position than Cantonese speakers that _did not_ receive training.  
+
+**Note:** _The training and collection of Cantonese speakers data was done by Terry Au (ms). She generously permitted us to use her data for acoustic analyses_
+
+---
+
+# Why hypothesize this?
+
+- Vowel duration is a robust acoustic cue to stops in coda position 
+- Vowel duration is **longer** before voiced consonants than for voiceless
+- Indication that perhaps Cantonese speakers utilize this cue to distinguish between voiced and voiceless consonants. 
+
+--
+
+
+
+
+**Are Cantonese speakers producing these words like native English speakers; or are they doing something different?**
+---
+class: inverse, center, middle
+
+# Methods
+
+---
+# Methods
+
+Participants (18- 22 yrs.)
+- 18 trained adult Cantonese speakers 
+- 18 waitlist-control adult Cantonese speakers 
+
+--
+
+Data
+- Productions of phonological minimal word pairs with **voiced** and **voiceless** stops in coda position after training 
+
+--
+
+.pull-left[
+**Voiced**
+- bad
+- bag 
+- cab
+- cub
+- dog
+- fad
+- feed 
+- pig
+- tab 
+]
+
+--
+
+.pull-right[
+**Voiceless**
+- bat
+- back
+- cap
+- cup
+- dock
+- fat
+- feet
+- pick
+- tab 
+]
+
+--
+
+**Note:** There were three age groups in total, I am in the process of slicing this data. Also, removed word **got** because no production data for minimal pair **god**
+
+
+---
+
+# Acoustic Slicing
+- Used PRAAT
+- Marked vowel duration boundaries for all productions 
+- Utilized the wav method for the beginning of the vowel and F2 method for the end of the vowel 
+
+
+--
+
+### Categorical Predictors
+- Training: 2 levels (untrained/trained)
+- Voicing: 2 levels (voiceless/voiced)
+
+--
+
+### Criterion
+- Vowel duration (ms) of post productions with voiced and voiceless stop consonants in coda position 
+
+---
+# Data 
+```{r view tidy data, message=FALSE}
+head(tidy_df)
+```
+
+---
+# Viewing the data
+```{r plot, warning=FALSE, message=FALSE,fig.retina=2, fig.align='center', fig.width=8,fig.height= 6, echo=FALSE}
+tidy_df %>% 
+  ggplot(., aes(x = Participant, y = Dur, fill = VoicedUnvoiced)) +
+  geom_boxplot() +
+  facet_grid(. ~ TrainingGroup) +
+  labs(x = "Training", y = "Vowel Duration(ms)", title = "Effects of Training on Vowel Duration", fill = "Voiced or Unvoiced")
+```
+
+It appears that overall, trained and untrained participants had about equal vowel lengths - with longer vowel lengths for in the voiced trained condition
+---
+# Analysis: General Linear Model 
+
+### Some considerations...
+- Categorical variables need to be coded: _which type of coding should I use?_
+- Chose sum coding: created 2 new columns for the training and voicing
+variables: trained (1), untrained (-1), voiced (1), voiceless (-1)
+- In which order should the variables should be entered into the model?
+
+---
+# Analysis: General Linear Model
+```{r, view sum coded data, message=FALSE, warning=FALSE, fig.height = 4}
+head(sum_df)
+```
+
+---
+# Nested Model Comparisons
+
+### Tested the following models:
+- **Inclusive:** (duration ~ voicingSum * trainingSum)
+- ** Additive:**  (duration ~ voicingSum + trainingSum)
+- ** No Voicing:**  (duration ~ trainingSum)
+- ** No Training:** (duration ~ voicingSum)
+- **Null:**  (duration ~ 1)
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+mod_inc <- lm(Dur ~  voicingSum * trainingSum, data = sum_df)  # inclusive model, R2 = .05347, .04906
+summary(mod_inc)
+
+mod_add <- lm(Dur ~ voicingSum + trainingSum, data = sum_df)  # nested model, add, R2 = .04918, .04623
+summary(mod_add)
+#no voicing
+mod_voice <- lm(Dur ~ voicingSum, data = sum_df)       
+# nested model, no training, R2 = .04918, .04623
+summary(mod_voice)
+# R2 = .04588, .04441
+mod_train <- lm(Dur ~ trainingSum, data = sum_df)                    # nested model, no voicing, R = .00337, .001827
+summary(mod_train)
+
+mod_nul <- lm(Dur ~ 1, data = sum_df)
+summary(mod_nul)
+```
+
+```{r new models mixed effects, message=FALSE, include=FALSE, echo=FALSE}
+my_null <- lmer(Dur ~ + (1|Participant), data = sum_df)
+summary(my_null)
+my_train <- lmer(Dur ~ trainingSum + (1|Participant), data = sum_df)
+summary(my_train)
+my_voice <- lmer(Dur ~ voicingSum + (1|Participant), data = sum_df)
+summary(my_voice)
+my_int <- lmer(Dur ~ voicingSum * trainingSum + (1|Participant), data = sum_df)
+summary(my_int)
+library(devtools); install_github("lme4","lme4")
+
+
+```
+### Best Model Summary
+
+The inclusive model was the best model fit. It explained the most variance, with R^2 = .0537; and adjusted = .04906
+```{r, best model print, message=FALSE, warning=FALSE, echo=FALSE}
+mod_inc %>% 
+  tidy(.) %>% 
+  kable(., format = 'html', digits = 3) %>% 
+  kable_styling(., full_width = FALSE, font_size = 16)
+```
+
+---
+# Nested Model Comparisons
+
+The inclusive model explained more variance than just voicing or training alone 
+
+
+**Model with only voicing:** R^2 = .04918, adjusted = .04623
+```{r, voice, message=FALSE, warning=FALSE, echo=FALSE}
+mod_voice %>% 
+  tidy(.) %>% 
+  kable(., format = 'html', digits = 3) %>% 
+  kable_styling(., full_width = FALSE, font_size = 16)
+```
+
+
+--
+**Model with only training:** R^2 = .00337, adjusted = .001827
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+mod_train %>%
+  tidy(.) %>% 
+  kable(., format = 'html', digits = 3) %>% 
+  kable_styling(., full_width = FALSE, font_size = 16)
+```
+
+
+---
+# Tested for Main Effects and Interactions
+
+### Findings:
+- **No Main Effect of training:** _F_(1) = 2.2341, _p_ =.135
+- **Main Effect of voicing:** _F_(1) = 31.074, _p_ <.001
+- **No Interaction:** _F_(1) = 2.9210, _p_ <.08   
+
+
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, include=FALSE}
+anova(my_int, mod_add) # test int
+anova(my_add, my_train) # test age
+anova(my_add, my_voice)  # test voicing
+```
+```{r, message=FALSE, warning=FALSE, echo=FALSE, include=FALSE}
+anova(mod_null, mod_int) # test int
+anova(mod_null, mod_voice) # test training
+anova(mod_null, mod_train) # test voicing
+```
+---
+# Implications 
+- Training did not seem to have an effect vowel length production  
+- However, vowel length varied depending upon whether the word had a voiced or voiceless coda
+- Specifically, voiced vowel length mean was 129.643 (ms); and the voiceless was voiceless vowel length mean was 106.323 (ms)
+- There seems to be something going on with the data...
+
+--
+
+**Possible explanations for these patterns?**
+
+- Participant as random effect? 
+- Model assumptions violated?
+- Incorrect coding process? 
+- Excluding relevant variable
+
+---
+# Model Residuals
+- Should be normally distributed
+- Absolute values of 1Q and 3Q should be similar
+- Mean = 0, median close to 0
+
+```{r, message=FALSE}
+summary(mod_inc$residuals)
+```
+
+---
+# Autocorrelation of Residuals
+
+```{r, message=FALSE, echo=FALSE, fig.height = 7}
+acf(mod_inc$residuals)
+```
+
+---
+# Normality of Residuals
+
+```{r residuals, message=FALSE, echo=FALSE}
+qqnorm(residuals(mod_inc))
+qqline(residuals(mod_inc))
+```
+
+---
+# Homoskedasticity 
+There is a clear pattern here; although not a fan pattern 
+- Does not bias parameter estimates
+- Possible reason for t-ratios/p-values 
+```{r, mod assumptions,message=FALSE, echo=FALSE, fig.height= 5}
+plot(fitted(mod_inc), residuals(mod_inc))
+```
+
+---
+# Conclusions:
+
+- Training did not have an effect 
+- This finding is due to use of general linear model
+- Transformations, such as centering?
+- Maybe sum coding did not provide useful information 
+    - Although it only affects the interpretation of the results
+      for each variable and does not change the 
+      overall effect of the variables
+    - Typically used for 1 categorical variable with 2 levels 
+- Excluded relevant variable (Type II error?) 
+
+
+--
+
+**Much variance left to be explained**
+Recall: best model only explained ~ 5% of the variance :(
+
+---
+# How to manage this?
+
+### What other predictors do I have?
+- Place of articulation (POA)
+- Phoneme 
+- Performance on comprehension task 
+
+
+
+### What other criterion do I plan to measure?
+- VOT
+- Mean aspiration intensity
+- Aspiration duration 
+- F2 at the end of the vowel 
+- Closure duration 
+- Voicing bar duration
+- **Pre and post measures**
+
+---
+# Comments and Questions? 
+
+- Additional variable suggestions?
+- Different coding suggestions?
+- Any other suggestions??
+
+#**Next Step: The mixed effects model!**
+
+---
+# Boxplot with POA
+```{r, boxplot with POA, message=FALSE,fig.retina=2, fig.align='center', fig.width=9,fig.height= 6, echo=FALSE, warning=FALSE}
+tidy_df %>% 
+  ggplot(., aes(x = POA, y = Dur, fill = TrainingGroup)) +
+  geom_boxplot() +
+  facet_grid(. ~ VoicedUnvoiced)
+labs(x = "Training", y = "Vowel Duration(ms)", title = 
+       "Effects of Training on Vowel Duration", fill = 
+       "Training Group")
+```

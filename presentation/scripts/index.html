@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>L2 productions of English plosives</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Ana Rinzler | Rutgers University | Center for Cognitive Science" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rutgers-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/rutgers.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# L2 productions of English plosives
+## Effects of training?
+### Ana Rinzler | Rutgers University | Center for Cognitive Science
+### 4/24/2016
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Background &amp; Research Question
+
+---
+class: left, middle 
+
+# Background: Timing vs. Amount of Input 
+
+--
+
+.pull-left[
+### Critical Period Hypothesis (Lenneberg, 1967):
+- critical period for acquisition is birth to puberty
+- this applies to both L1 and L2
+- learning a language after puberty is more difficult 
+- difficulty is due to reduction in neural plasticity with age?
+
+
+]
+
+--
+
+.pull-right[
+### 'Input Hypothesis' (Au, ms):
+- adults receive less exposure 
+- optimal acquisition of English as L2 differs by L1
+- Spanish L1 speakers can acquire English 
+  with native-like quality until 15 yrs. (Birdsong &amp; Molis, 2001)
+]  
+--
+
+**Can the quality and quantity of input influence a Cantonese speaker's ability to perceive and produce notoriously difficult English contrasts?**
+
+---
+# What are the English contrasts of interest?  
+**English Plosives:** /p, t, k/ and /b, d, g/
+
+- Bilabial: /p/ is **voiceless**; /b/ is **voiced**
+- Alveolar: /t/ is **voiceless**; /d/ is **voiced**
+- Velar: /k/ is **voiceless**; /g/ is **voiced** 
+
+--
+
+### What makes these contrasts difficult? 
+
+--
+.pull-left[
+**Cantonese** /p, t, k/ and /b, d, g/
+- Cantonese does not have articulatory feature of **voicing** 
+- Cantonese uses **aspiration** to make these distinction in onset position
+- Cantonese **only** has unreleased /p, t, k/ in coda position
+]
+--
+.pull-right[
+**English:** /p, t, k/ and /b, d, g/
+- In English /p, t, k/ are **aspirated** (i.e. in onset position: [**p**æt] vs. [**b**æt])
+- In English /p, t, k/ are **unaspirated** and released (i.e. in coda position: [tæ**p**] vs. [tæ**b**])
+] 
+
+Chan and Li (2000)
+
+Note: _I will focus on words with stops in coda position_
+
+---
+class: left, middle 
+
+# Main Question of interest
+
+--
+
+## Does training result in trained Cantonese speakers producing longer vowel  durations in words with voiced stops in coda position? 
+
+--
+
+# Prediction
+
+--
+
+Cantonese speakers that received training will produce longer vowel lengths in words with voiced stops in coda position than Cantonese speakers that _did not_ receive training.  
+
+**Note:** _The training and collection of Cantonese speakers data was done by Terry Au (ms). She generously permitted us to use her data for acoustic analyses_
+
+---
+
+# Why hypothesize this?
+
+- Vowel duration is an acoustic cue to stops in coda position in English 
+- Vowel duration is **longer** before voiced consonants than for voiceless
+ 
+(Charles-Luce, 1985; House and Fairbanks, 1953; Peterson and Lehiste, 1960;
+House, 1961; Umeda, 1975; Klatt, 1976)  
+
+
+--
+Perhaps Cantonese speakers utilize this cue to distinguish between voiced and voiceless consonants.  
+
+--
+
+**Are Cantonese speakers producing these words like native English speakers; or are they doing something different?**
+---
+class: inverse, center, middle
+
+# Methods
+
+---
+# Methods
+
+Participants (18- 22 yrs.)
+- 18 trained adult Cantonese speakers 
+- 18 waitlist-control adult Cantonese speakers 
+
+--
+
+Data
+- Productions of phonological minimal word pairs with **voiced** and **voiceless** stops in coda position after training 
+
+--
+
+.pull-left[
+**Voiced**
+- bad
+- bag 
+- cab
+- cub
+- dog
+- fad
+- feed 
+- pig
+- tab 
+]
+
+--
+
+.pull-right[
+**Voiceless**
+- bat
+- back
+- cap
+- cup
+- dock
+- fat
+- feet
+- pick
+- tab 
+]
+
+
+
+---
+
+# Acoustic Slicing
+- Used PRAAT
+- Marked vowel duration boundaries for all productions 
+- Utilized the wav method for the beginning of the vowel and F2 method for the end of the vowel 
+
+
+--
+Categorical Predictors: **Fixed Effects**
+- Training: 2 levels (untrained/trained)
+- Voicing: 2 levels (voiceless/voiced)
+
+Categorical Predictors: **Random Effect**
+- Participant
+
+
+--
+
+Criterion
+- Vowel duration (ms) of post productions with voiced and voiceless plosives in coda position 
+
+---
+# Data 
+
+### This is the tidy data: 
+
+```
+##   Participant TrainingGroup Word VoicedUnvoiced Position Dur
+## 1        1404           Yes back       unvoiced    vowel 236
+## 2        1404           Yes  bat       unvoiced    vowel 259
+## 3        1404           Yes  cup       unvoiced    vowel 158
+## 4        1404           Yes dock       unvoiced    vowel 186
+## 5        1404           Yes  fat       unvoiced    vowel 194
+##   PrePosttraining OnsetMedialCoda      POA tierNumber
+## 1            post            coda    velar          1
+## 2            post            coda alveolar          1
+## 3            post            coda bilabial          1
+## 4            post            coda    velar          1
+## 5            post            coda alveolar          1
+```
+---
+# Data 
+
+### Summary of stats
+
+```
+##   TrainingGroup VoicedUnvoiced Dur.Mean Dur.StandDev
+## 1            No       unvoiced 166.7778     50.35773
+## 2            No         voiced 182.9568     53.82619
+## 3           Yes       unvoiced 165.8696     49.00142
+## 4           Yes         voiced 196.3252     58.84683
+```
+
+---
+# Viewing the data
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" /&gt;
+
+Overall, it appears that trained and untrained participants had about equal vowel lengths - with longer vowel lengths for in the voiced trained condition
+
+---
+# Analysis: General Linear Mixed Effect Model 
+
+### Data Manipulation
+- Categorical variables were sum coded
+
+--
+
+- Created 2 new columns for the training and voicing variables: trained (1), untrained (-1), voiced (1), voiceless (-1)
+
+--
+
+- The factor **participants** was set as a random factor: because there were multiple responses from the same subject (i.e. they produced more than one word), thus, these productions are _not_ independent from each other  
+
+--
+
+- Duration was normalized by participant
+
+
+---
+# Testing Model Assumptions 
+
+--
+### Normality of Residuals
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="504" style="display: block; margin: auto;" /&gt;
+
+---
+# Testing Model Assumptions
+
+--
+### Homoskedasticity 
+This now looks fine with participant as a random factor 
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" width="504" style="display: block; margin: auto;" /&gt;
+
+---
+# Analysis: General Linear Mixed Effects Model
+
+```r
+head(sum_df)
+```
+
+```
+## # A tibble: 6 x 13
+##   Participant TrainingGroup Word  VoicedUnvoiced Position   Dur
+##   &lt;fct&gt;       &lt;fct&gt;         &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;    &lt;int&gt;
+## 1 1404        Yes           back  unvoiced       vowel      236
+## 2 1404        Yes           bat   unvoiced       vowel      259
+## 3 1404        Yes           cup   unvoiced       vowel      158
+## 4 1404        Yes           dock  unvoiced       vowel      186
+## 5 1404        Yes           fat   unvoiced       vowel      194
+## 6 1404        Yes           feet  unvoiced       vowel      235
+## # ... with 7 more variables: PrePosttraining &lt;fct&gt;, OnsetMedialCoda &lt;fct&gt;,
+## #   POA &lt;fct&gt;, tierNumber &lt;int&gt;, trainingSum &lt;dbl&gt;, voicingSum &lt;dbl&gt;,
+## #   durNorm &lt;dbl&gt;
+```
+
+---
+# Nested Model Comparisons
+
+### Tested the following models:
+- **Inclusive:** (duration ~ voicingSum * trainingSum )
+- ** Additive:**  (duration ~ voicingSum + trainingSum)
+- ** No Voicing:**  (duration ~ trainingSum)
+- ** No Training:** (duration ~ voicingSum)
+- **Null:**  (duration ~ 1)
+
+--
+
+Note that a **(1|Participant)** notation was added to each model. The 1 represents the assumption that there are different intercepts for each subject due to have multiple responses for each per participant.
+
+
+
+---
+# Best Model Summary
+
+The inclusive model was the best model fit. It explained the most variance, with R squared marginal = .05244 and conditional = .30500
+
+```
+## Linear mixed model fit by maximum likelihood . t-tests use
+##   Satterthwaite's method [lmerModLmerTest]
+## Formula: 
+## Dur ~ voicingSum * trainingSum + (1 | Participant) + (1 | Participant:trainingSum)
+##    Data: sum_df
+## Control: lmerControl(optimizer = "bobyqa")
+## 
+##      AIC      BIC   logLik deviance df.resid 
+##   6878.8   6910.1  -3432.4   6864.8      641 
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -2.5399 -0.5939  0.0500  0.6616  3.6407 
+## 
+## Random effects:
+##  Groups                  Name        Variance Std.Dev.
+##  Participant             (Intercept)  365.3   19.11   
+##  Participant:trainingSum (Intercept)  349.5   18.70   
+##  Residual                            2093.7   45.76   
+## Number of obs: 648, groups:  Participant, 36; Participant:trainingSum, 36
+## 
+## Fixed effects:
+##                        Estimate Std. Error      df t value Pr(&gt;|t|)    
+## (Intercept)             177.982      4.805  36.000  37.041  &lt; 2e-16 ***
+## voicingSum               11.646      1.798 612.056   6.478 1.91e-10 ***
+## trainingSum               3.115      4.805  36.000   0.648   0.5209    
+## voicingSum:trainingSum    3.556      1.798 612.056   1.978   0.0484 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Correlation of Fixed Effects:
+##             (Intr) vcngSm trnngS
+## voicingSum  -0.001              
+## trainingSum  0.000 -0.001       
+## vcngSm:trnS -0.001  0.000 -0.001
+```
+
+---
+# Best Model Summary
+
+**Marginal R squared:** the proportion of variance explained _only_ including on the fixed factors (= 5.2%)  
+
+**Conditional R squared:** the the proportion of variance explained including _both_ the fixed and random factors (= 30.5%)  
+
+--
+The inclusive model explained more variance than just voicing or training alone 
+
+**Model with only voicing:** R squared marginal = .04536, conditional = .295  
+
+**Model with only training:** R squared marginal =  .00332, conditional= .2538
+
+--
+We can see that training explained only a small part of the variance, while, 
+and that conditional variance (including the random factor participant), explained more than 
+the fixed factors. 
+
+
+---
+# Tested for Main Effects and Interactions
+
+### Comparing Models 
+
+- **Null** compared to **No Voicing** 
+- **Null** compared to **No Training**
+- **Null** compared to **Inclusive**
+
+--
+
+### Results
+
+- **Main Effect of voicing:** χ2 (1)=44.664, p &lt;.001
+- **No Main Effect of traininng**: χ2 (1)=0.4302, p =0.5119
+- **Significant Interaction between voicing and training:** χ2 (4)=40.342, p &lt;.05
+
+---
+# Conclusions
+
+- Words with voiced plosives increased vowel duration by 11.646 (ms) ± 1.8 (SE)  
+
+- Training did not affect vowel duration (3.115 ms, ± 4.9 SE, p = .5329)  
+
+- The significant interaction indicates an interdependence between voicing and training (3.556 ms, ± 1.8 SE)
+
+
+
+--
+Thus, concluding a main effect of voicing can be tricky due to the interactionn. However, since training did not have a main effect, it is possible to suggest that participants varied in their duration of voiced and voiceless plosives. 
+
+
+---
+# Implications 
+
+**Possible explanations for these patterns?**
+
+.pull-left[
+- Participant variability (recall SE of ± 4.9)  
+
+- Excluding relevant variable  
+
+- There is an affect of word
+
+- Much variability between words  
+]
+
+
+--
+.pull-right[
+- Vowel length variation is language-specific to English, not a universal behavior  
+
+- Is it a lengthening or a shortening rule?  
+
+- Even within English speakers, it varies  
+]
+
+(Gandour, Weinberg &amp; Rutokswki, 1980) 
+
+---
+# A glimpse at individual participants
+&lt;img src="index_files/figure-html/unnamed-chunk-11-1.png" width="864" style="display: block; margin: auto;" /&gt;
+
+---
+# A glimplse at individual word variability 
+
+&lt;img src="index_files/figure-html/unnamed-chunk-12-1.png" width="792" style="display: block; margin: auto;" /&gt;
+
+---
+# Overall Conclusions:
+
+- Training did not have an effect, **however...**  
+
+- Vowel duration may not as robust of an acoustic cue as thought to be  
+
+- Participants are most likely doing something different from native English speakers
+
+- This may be espeically true for individuals who do not have a voicing contrast in their language  
+
+- Excluded relevant variable (Type II error?) 
+
+
+--
+
+**Much variance left to be explained**
+Recall: best model only explained ~ 5% of the variance :(
+
+---
+# How to manage this?
+
+Perhaps vowel duration is not a cue that Cantonese speaker's utilize when making this distinction  
+
+### What other predictors do I have?
+- Place of articulation (POA)
+- Phoneme 
+- Performance on comprehension task 
+
+
+### What other criterion do I plan to measure?
+- VOT
+- Mean aspiration intensity
+- Aspiration duration 
+- F2 at the end of the vowel 
+- Closure duration 
+- Voicing bar duration
+- **Pre and post measures**
+
+
+---
+# Future Directions
+
+### Better Understand what acoustic cues may be more relevant for Cantonese speakers learning English
+
+- Explore the role of aspiration  
+
+- Compare pre and post production measurements  
+
+- To understand the Critical Period Hypothesis compare productions from younger participants to that of older participants  
+
+- Use performance on comprehension task to understand individual variation in production   
+
+---
+# Thanks everyone for a great semester!
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"self_contained": false,
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

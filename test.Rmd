@@ -1,0 +1,95 @@
+---
+title             : "Is vowel duration an acoustic cue for L2 speakers producing English plosives?"
+shorttitle        : "L2 production of English plosives"
+
+author: 
+  - name          : "Ana N. Rinzler"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "1498 State Rte. 28 West Hurley, NY 12491"
+    email         : "anb136@psych.rutgers.edu"
+
+
+affiliation:
+  - id            : "1"
+    institution   : "Rutgers University, the State University of New Jersey"
+  - id            : 
+    institution   : 
+
+author_note: |
+  Cognitive Psychology   
+  
+  Rutgers Center for Cognitive Science
+
+  I would like to thank Dr. Terry Kit-fong Au from the University of Hong   Kong for permitting us to conduct acoustic analyses on production data from her research. 
+
+abstract: |
+  Enter abstract here. Each new line herein must be indented, like this line.
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+figsintext        : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+mask              : no
+
+class             : "man"
+output            : papaja::apa6_pdf
+header-includes:
+  - \usepackage{tipa}
+---
+
+```{r load_packages, include = FALSE}
+library("papaja")
+```
+
+```{r analysis_preferences}
+# Seed for random number generation
+set.seed(42)
+```
+
+
+
+# Methods
+In this study acoustic analyses were conducted on Cantonese speakers' productions of English phonological minimal word pairs with voiced (i.e. /b d g/) and voiceless (i.e. /p t k/) plosives in coda position. The production of the word "got" was excluded from this analysis as it was the only word that did not have a minimal pair. For all other productions, PRAAT was used to measure the duration of the vowel. Measuring vowel duration was motivated by evidence that vowel length is an acoustic cue that English speakers use to distinguish whether the following plosive is voiced or voiceless. For instance, the duration of the vowel preceding a voiced stop is typically longer than the duration of a vowel preceding a voiceless stop (Charles-Luce, 1985; House and Fairbanks, 1953; Peterson and Lehiste, 1960; House, 1961; Umeda, 1975; Klatt, 1976). Please note that the production data analyzed in this study was collected and generously provided by Dr. Terry Kit-fong Au, from the University of Hong Kong. 
+
+## Participants
+There were a total of 36 University students from the University of Hong Kong. 18 of the participants were in the training group (33% men), and 18 of the participants were in a wait-list control group (28% men). 
+
+## Material
+The following analyses are based on productions of phonological minimal word pairs with voiced and voiceless plosives in coda position. The vowel duration from the following voiced words were analyzed:/b\ae d, bæg, k\ae b, k\textturnv b , d\textopeno g , f\ae d, fid, p\textsci g, t\ae b/. The following voiceless words were analyzed: / b\ae t, b\ae k, k\ae p, k\textturnv p, d\textscripta k, f\ae t, fit, p\textsci k, t\ae b/. Only post-training productions were analyzed. For the wait-list control particpants, this was the second time that they produced above words (e.g. they did receive training in between the first and second times that they produced these words). However for trained participants, these productions represent the second time that they produced these words after they received training. 
+
+## Procedure
+Participants in Terry Au's (ms) study participated in a 4 - 6 week training program compromised of comprehending and producing English phonological minmial word pairs. Not all of the words that were used in training were used in production. See _Appendix A_ for full list of words, as well as which words were used in training, and which were not. The productions were then sent to our lab for acoustic analyses.  
+
+The software PRAAT was used to conduct acoustic analyses. Textgrids were created from the .wav sound files in order to mark the beginning and end of the vowel boundary. Utilizing Sennheiser HD 555 headphones, the beginning of the vowel was marked with the _wav_ method (cite) and the end of the vowel was marked with the _F2_ method (cite). All boundaries were marked at the zero-crossing line. Measurements at present, were only taken by one researcher. Thus, future cross-validation through concordance rates is required. PRAAT scripting was then used to export vowel duration measurements.  
+
+## Data analysis
+We used `r cite_r("r-references.bib")` for all our analyses.
+Data from the production task were analyzed using a general linear mixed-effects model using the lme4 package (1.1-10 in R 3.2.2). The criterion variable was _vowel duration_ which was convereted to milliseconds and normalized for speaker. There were two predictors which were fixed factors: (1) training _trained/untrained_ and voicing (2) _voiced/unvoiced_. Both factors were cateogrical and were sum coded. For the training variable, _trained_ (i.e. participants who were trained) was assigned a 1, and _untrained_ (i.e. participants who were not trained) was assigned a 0; while _voiced_ (i.e. words with voiced plosives in coda position) was assigned a 1 and _voiceless_ was assigned a 0 (i.e. words with voiceless plosives in coda position). Two new columns in the data frame were generated to represent the sum variables of the training and the voicing variables. The variable participant was treated as a random effect as each participant had multiple productions. In other words,  each participant produced all of the 36 voiced (18) and voiceless (18) words. Visual inspection of the Q-Q plots and plots of residuals against fitted values revealed no violations of normality or homoscedasticity. 
+
+
+
+# Results
+
+# Discussion
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id = "refs"></div>
+\endgroup

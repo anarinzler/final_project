@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525359486264.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "ACEB9817",
+    "lastKnownWriteTime" : 1525799820,
+    "last_content_update" : 1525799820474,
+    "path" : "~/Documents/GitHub/final_project/manuscript/methods_results.Rmd",
+    "project_path" : "manuscript/methods_results.Rmd",
+    "properties" : {
+        "cursorPosition" : "39,17",
+        "ignored_words" : "Hong,fong\n",
+        "scrollLine" : "39",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

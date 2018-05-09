@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1524672074362.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DB41C91D",
+    "lastKnownWriteTime" : 1524680931,
+    "last_content_update" : 1524686665894,
+    "path" : "~/Desktop/cantonese_final/scripts/additional_info.R",
+    "project_path" : "scripts/additional_info.R",
+    "properties" : {
+        "cursorPosition" : "114,30",
+        "scrollLine" : "102",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

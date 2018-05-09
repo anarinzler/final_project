@@ -1,0 +1,279 @@
+\documentclass[man]{apa6}
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+
+% Table formatting
+\usepackage{longtable, booktabs}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+
+\newenvironment{lltable}
+  {\begin{landscape}\begin{center}\begin{ThreePartTable}}
+  {\end{ThreePartTable}\end{center}\end{landscape}}
+
+  \usepackage{ifthen} % Only add declarations when endfloat package is loaded
+  \ifthenelse{\equal{\string man}{\string man}}{%
+   \DeclareDelayedFloatFlavor{ThreePartTable}{table} % Make endfloat play with longtable
+   % \DeclareDelayedFloatFlavor{ltable}{table} % Make endfloat play with lscape
+   \DeclareDelayedFloatFlavor{lltable}{table} % Make endfloat play with lscape & longtable
+  }{}%
+
+
+
+% The following enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand\getlongtablewidth{%
+ \begingroup
+  \ifcsname LT@\roman{LT@tables}\endcsname
+  \global\longtablewidth=0pt
+  \renewcommand\LT@entry[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}%
+  \@nameuse{LT@\roman{LT@tables}}%
+  \fi
+\endgroup}
+
+
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            pdfauthor={},
+            pdftitle={Is vowel duration an acoustic cue for L2 speakers producing English plosives?},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=black,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+
+% Manuscript styling
+\captionsetup{font=singlespacing,justification=justified}
+\usepackage{csquotes}
+\usepackage{upgreek}
+
+ % Line numbering
+  \usepackage{lineno}
+  \linenumbers
+
+
+\usepackage{tikz} % Variable definition to generate author note
+
+% fix for \tightlist problem in pandoc 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Essential manuscript parts
+  \title{Is vowel duration an acoustic cue for L2 speakers producing English
+plosives?}
+
+  \shorttitle{L2 production of English plosives}
+
+
+  \author{Ana N. Rinzler\textsuperscript{1}}
+
+  % \def\affdep{{""}}%
+  % \def\affcity{{""}}%
+
+  \affiliation{
+    \vspace{0.5cm}
+          \textsuperscript{1} Rutgers University, the State University of New Jersey\\
+          \textsuperscript{}   }
+
+  \authornote{
+    Cognitive Psychology
+    
+    Rutgers Center for Cognitive Science
+    
+    I would like to thank Dr.~Terry Kit-fong Au from the University of Hong
+    Kong for permitting us to conduct acoustic analyses on production data
+    from her research.
+    
+    Correspondence concerning this article should be addressed to Ana N.
+    Rinzler, 1498 State Rte. 28 West Hurley, NY 12491. E-mail:
+    \href{mailto:anb136@psych.rutgers.edu}{\nolinkurl{anb136@psych.rutgers.edu}}
+  }
+
+
+  \abstract{Enter abstract here. Each new line herein must be indented, like this
+line.}
+  \keywords{keywords \\
+
+    \indent Word count: X
+  }
+
+
+
+
+  \usepackage{tipa}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+
+\maketitle
+
+\setcounter{secnumdepth}{0}
+
+
+
+\section{Methods}\label{methods}
+
+In this study acoustic analyses were conducted on Cantonese speakers'
+productions of English phonological minimal word pairs with voiced (i.e.
+/b d g/) and voiceless (i.e. /p t k/) plosives in coda position. The
+production of the word \enquote{got} was excluded from this analysis as
+it was the only word that did not have a minimal pair. For all other
+productions, PRAAT was used to measure the duration of the vowel.
+Measuring vowel duration was motivated by evidence that vowel length is
+an acoustic cue that English speakers use to distinguish whether the
+following plosive is voiced or voiceless. For instance, the duration of
+the vowel preceding a voiced stop is typically longer than the duration
+of a vowel preceding a voiceless stop (Charles-Luce, 1985; House and
+Fairbanks, 1953; Peterson and Lehiste, 1960; House, 1961; Umeda, 1975;
+Klatt, 1976). Please note that the production data analyzed in this
+study was collected and generously provided by Dr.~Terry Kit-fong Au,
+from the University of Hong Kong.
+
+\subsection{Participants}\label{participants}
+
+There were a total of 36 University students from the University of Hong
+Kong. 18 of the participants were in the training group (33\% men), and
+18 of the participants were in a wait-list control group (28\% men).
+
+\subsection{Material}\label{material}
+
+The following analyses are based on productions of phonological minimal
+word pairs with voiced and voiceless plosives in coda position. The
+vowel duration from the following voiced words were analyzed:/b\ae d,
+bæg, k\ae b, k\textturnv b , d\textopeno g , f\ae d, fid, p\textsci g,
+t\ae b/. The following voiceless words were analyzed: / b\ae t, b\ae k,
+k\ae p, k\textturnv p, d\textscripta k, f\ae t, fit, p\textsci k,
+t\ae b/. Only \enquote{post-training} productions were analyzed. For the
+wait-list control particpants, this was the second time that they
+produced above words (e.g.~they did receive training in between the
+first and second times that they produced these words). However for
+trained participants, these productions represent the second time that
+they produced these words after they received training.
+
+\subsection{Procedure}\label{procedure}
+
+Participants in Terry Au's (ms) study participated in a 4 - 6 week
+training program compromised of comprehending and producing English
+phonological minmial word pairs. Not all of the words that were used in
+training were used in production. See \emph{Appendix A} for full list of
+words, as well as which words were used in training, and which were not.
+The productions were then sent to our lab for acoustic analyses.
+
+The software PRAAT was used to conduct acoustic analyses. Textgrids were
+created from the .wav sound files in order to mark the beginning and end
+of the vowel boundary. Utilizing Sennheiser HD 555 headphones, the
+beginning of the vowel was marked with the \emph{wav} method (cite) and
+the end of the vowel was marked with the \emph{F2} method (cite). All
+boundaries were marked at the zero-crossing line. Measurements at
+present, were only taken by one researcher. Thus, future
+cross-validation through concordance rates is required. PRAAT scripting
+was then used to export vowel duration measurements.
+
+\subsection{Data analysis}\label{data-analysis}
+
+We used R (Version 3.4.3; R Core Team, 2017) and the R-package
+\emph{papaja} (Version 0.1.0.9709; Aust \& Barth, 2018) for all our
+analyses. Data from the production task were analyzed using a general
+linear mixed-effects model using the lme4 package (1.1-10 in R 3.2.2).
+The criterion variable was \emph{vowel duration} which was convereted to
+milliseconds and normalized for speaker. There were two predictors which
+were fixed factors: (1) training \emph{trained/untrained} and voicing
+(2) \emph{voiced/unvoiced}. Both factors were cateogrical and were sum
+coded. For the training variable, \emph{trained} was assigned a 1, and
+\emph{untrained} was assigned a 0; while \emph{voiced} was assigned a 1
+and \emph{voiceless} was assigned a 0. Two new columns in the data frame
+were generated to represent the sum variables of the training and the
+voicing variables. The variable participant was treated as a random
+effect as each participant had multiple productions (i.e.~each
+participant produced each of the 36 voiced and voiceless words). Visual
+inspection of the Q-Q plots and plots of residuals against fitted values
+revealed that the assumptions of normality and homoscedasticity were in
+tact.
+
+\section{Results}\label{results}
+
+\section{Discussion}\label{discussion}
+
+\newpage
+
+\section{References}\label{references}
+
+\begingroup
+\setlength{\parindent}{-0.5in} \setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\hypertarget{ref-R-papaja}{}
+Aust, F., \& Barth, M. (2018). \emph{papaja: Create APA manuscripts with
+R Markdown}. Retrieved from \url{https://github.com/crsh/papaja}
+
+\hypertarget{ref-R-base}{}
+R Core Team. (2017). \emph{R: A language and environment for statistical
+computing}. Vienna, Austria: R Foundation for Statistical Computing.
+Retrieved from \url{https://www.R-project.org/}
+
+\endgroup
+
+
+
+
+
+
+\end{document}

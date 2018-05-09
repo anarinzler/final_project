@@ -1,0 +1,55 @@
+"0","devtools::install_github(""yihui/xaringan"")
+"
+"2","* installing *source* package ‘xaringan’ ...
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** tests
+"
+"2","** preparing package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded
+"
+"2","* DONE (xaringan)
+"
+"0","names(xaringan:::list_css())"
+"1"," [1]"
+"1"," ""default-fonts""   "
+"1"," ""default""         "
+"1"," ""hygge""           "
+"1","
+"
+"1"," [4]"
+"1"," ""metropolis-fonts"""
+"1"," ""metropolis""      "
+"1"," ""rladies-fonts""   "
+"1","
+"
+"1"," [7]"
+"1"," ""rladies""         "
+"1"," ""robot-fonts""     "
+"1"," ""robot""           "
+"1","
+"
+"1","[10]"
+"1"," ""rutgers-fonts""   "
+"1"," ""rutgers""         "
+"1"," ""tamu-fonts""      "
+"1","
+"
+"1","[13]"
+"1"," ""tamu""            "
+"1"," ""uo-fonts""        "
+"1"," ""uo""              "
+"1","
+"

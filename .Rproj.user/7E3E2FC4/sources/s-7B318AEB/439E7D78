@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525374148261.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "439E7D78",
+    "lastKnownWriteTime" : 6,
+    "last_content_update" : 1525374148261,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "FADDC291",
+        "caption" : "sum_df",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sum_df&cache_key=FADDC291",
+        "displayedObservations" : 648,
+        "environment" : "",
+        "object" : "sum_df",
+        "preview" : 0,
+        "totalObservations" : 648,
+        "variables" : 12
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

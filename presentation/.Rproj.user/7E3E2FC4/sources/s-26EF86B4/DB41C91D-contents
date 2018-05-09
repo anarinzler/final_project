@@ -1,0 +1,117 @@
+
+library(tidyverse)
+library(xaringan)
+library(ggfortify)
+library(broom)
+library(kableExtra)
+
+lang_df <- read.csv("/Users/anarinzler/Desktop/cantonese_final/raw data/raw_data.csv")
+
+
+
+tidy_df <- lang_df %>%
+  select(., Participant, TrainingGroup, Word, VoicedUnvoiced, Position, Duration)
+
+
+sum_df %>% 
+  ggplot(., aes(x = Participant, y = Dur, color = VoicedUnvoiced)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+  labs(x = "Training", y = "Vowel Duration(ms)", title = "Effects of Training on Vowel Duration", 
+color = "Voiced or Unvoiced")
+sum_df <- tidy_df %>%
+  mutate(., trainingSum = if_else(TrainingGroup == "Yes", true = 1, false = -1)) %>%
+  mutate(., voicingSum = if_else(VoicedUnvoiced == "voiced", true = 1, false = -1))
+
+```{r, message=FALSE, include=FALSE, echo=FALSE}
+anova(mod_inc, mod_add) # test int
+anova(mod_add, mod_voice) # test training
+anova(mod_add, mod_train) # test voicing
+```
+
+
+tidy_df %>% 
+  ggplot(., aes(x = TrainingGroup, y = Duration, fill = VoicedUnvoiced)) +
+  geom_boxplot() +
+  labs(x = "Training", y = "Vowel Duration", title = "Effects of Training on Vowel Duration", 
+       fill = "Voiced or Unvoiced") 
+
+
+# explain data -- looks like training group has lower than no trained to begin with 
+
+tidy_df %>% 
+  ggplot(., aes(x = Participant, y = Dur, color = TrainingGroup)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+  facet_grid(. ~ VoicedUnvoiced)
+  labs(x = "Training", y = "Vowel Duration(ms)", title = 
+         "Effects of Training on Vowel Duration", fill = 
+         "Training Group")
+
+?spread
+?gather
+  
+dum_df[!complete.cases(dum_df),]
+
+group_by(., dur) %>% 
+  summarize(voice_mean = mean(VoicedUnvoiced), voic_sd = sd(VoicedUnvoiced), 
+            train_mean = mean(TraingingGroup), train_sd = sd(TraingingGroup)) %>% 
+  knitr::kable(., format = 'markdown')
+?mutate
+
+lm(Dur ~ trainingSum, data = sum_df)
+lm(Dur ~ voicingSum, data = sum_df)
+lm(Dur ~ voicingSum + trainingSum, data = sum_df)
+
+```{r, boxplot with POA, message=FALSE,fig.retina=2, fig.align='center', fig.width=8,fig.height= 4, echo=FALSE}
+tidy_df %>% 
+  ggplot(., aes(x = POA, y = Dur, fill = TrainingGroup)) +
+  geom_boxplot() +
+  facet_grid(. ~ VoicedUnvoiced)
+labs(x = "Training", y = "Vowel Duration(ms)", title = 
+       "Effects of Training on Vowel Duration", fill = 
+       "Training Group")
+```
+
+qqnorm(residuals(mod_inc))
+qqline(residuals(mod_inc))
+
+autoplot(mod_inc, which = 2)
+
+summary(mod_inc$residuals)
+
+```{r, message=FALSE, warning=FALSE, fig.retina=2, fig.align='center', fig.width=8,fig.height= 4, echo=FALSE}
+tidy_df %>% 
+  ggplot(., aes(x = Particiapant, y = Dur, color = VoicedUnvoiced)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+labs(x = "Participant", y = "Vowel Duration(ms)", color = 
+       "Training Group")
+```
+
+#mixed effects modeling
+#lmer() or glmer() from the lme4 package 
+#lmer(criterion ~ fixed_effect + (1|random_effect), data = my_data)
+
+#lmer(response ~ time + (1|subjects), data = my_df)
+
+my_null <- lmer(Dur ~ 1 + (1|Participant), data = sum_df)
+summary(my_null)
+my_train <- lmer(Dur ~ trainingSum + (trainingSum|Participant), data = sum_df)
+summary(my_train)
+my_voice <- lmer(Dur ~ voicingSum + (voicingSum|Participant), data = sum_df)
+summary(my_voice)
+my_int <- lmer(Dur ~ voicingSum * trainingSum + (voicingSum * trainingSum|Participant), data = sum_df)
+summary(my_int)
+
+anova(my_null, my_int) # test int
+anova(my_null, my_voice) # test training
+anova(my_null, my_train)
+
+
+sum_df %>% 
+  ggplot(., aes(x = Participant, y = Dur, color = VoicedUnvoiced)) +
+  geom_point() +
+  geom_smooth(method = 'lmer')
+labs(x = "Training", y = "Vowel Duration(ms)", title = "Effects of Training on Vowel Duration", 
+     fill = "Voiced or Unvoiced")

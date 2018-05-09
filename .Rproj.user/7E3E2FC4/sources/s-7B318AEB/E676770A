@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525374383885.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E676770A",
+    "lastKnownWriteTime" : 4294967302,
+    "last_content_update" : 1525374383885,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "8c1c5dd32f58407aaaa09cb069301c81",
+        "name" : "mod_full",
+        "title" : "mod_full"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

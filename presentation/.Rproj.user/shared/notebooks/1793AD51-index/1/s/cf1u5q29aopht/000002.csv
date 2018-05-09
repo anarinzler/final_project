@@ -1,0 +1,5 @@
+"0","tidy_df <- lang_df %>%
+  select(., Participant, TrainingGroup, Word, VoicedUnvoiced, Position, Dur, PrePosttraining, OnsetMedialCoda, POA, tierNumber) %>%
+  filter(., Position == ""vowel"", PrePosttraining == ""post"", OnsetMedialCoda == ""coda"", tierNumber == ""1"", Word != ""got"")
+"
+"2","package ‘bindrcpp’ was built under R version 3.4.4"

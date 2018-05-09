@@ -1,0 +1,9 @@
+"0","tidy_df %>% 
+  ggplot(., aes(x = TrainingGroup, y = Duration, fill = VoicedUnvoiced)) +
+  geom_boxplot() +
+  labs(x = ""Training"", y = ""Vowel Duration"", legend = ""Voiced or unvoiced"", title = ""Effects of Training on Vowel Duration"") +
+  + labs(fill='Voiced or Unvoiced')
+"
+"2","Error in +labs(fill = ""Voiced or Unvoiced"") : 
+  invalid argument to unary operator
+"

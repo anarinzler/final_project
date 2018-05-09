@@ -1,0 +1,4 @@
+"0","anova(my_int, my_add)
+"
+"2","Error in anova.merMod(my_int, my_add) : object 'my_add' not found
+"

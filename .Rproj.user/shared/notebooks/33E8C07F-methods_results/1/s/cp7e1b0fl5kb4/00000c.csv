@@ -1,0 +1,7 @@
+"0","library(""papaja"")
+library(""dplyr"")
+library(""afex"")
+"
+"2","package ‘afex’ was built under R version 3.4.4"
+"2","Error: package ‘emmeans’ required by ‘afex’ could not be found
+"

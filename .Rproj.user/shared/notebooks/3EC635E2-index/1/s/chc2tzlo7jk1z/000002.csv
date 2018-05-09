@@ -1,0 +1,7 @@
+"0","sum_df <- tidy_df %>%
+ mutate(., trainingSum = if_else(TrainingGroup == ""Yes"", true = 1, false = -1)) %>%
+  mutate(., voicingSum = if_else(VoicedUnvoiced == ""voiced"", true = 1, false = -1)) %>%
+mutate(., Dur - mean(Dur))
+"
+"2","Error in eval(lhs, parent, parent) : object 'tidy_df' not found
+"

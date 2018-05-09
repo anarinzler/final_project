@@ -1,0 +1,11 @@
+"0","library(tidyverse)
+library(xaringan)
+library(ggfortify)
+library(broom)
+"
+"2","package ‘broom’ was built under R version 3.4.4"
+"0","library(kableExtra)"
+"2","package ‘kableExtra’ was built under R version 3.4.4"
+"0","library(lme4)"
+"2","package ‘lme4’ was built under R version 3.4.4"
+"0","library(Matrix)"
